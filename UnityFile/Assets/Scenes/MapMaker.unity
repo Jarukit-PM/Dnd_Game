@@ -2641,7 +2641,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6680,7 +6680,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1922657711
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7311,6 +7311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062686867}
   - component: {fileID: 2062686866}
+  - component: {fileID: 2062686868}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -7347,6 +7348,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2062686868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062686865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559d5579c7564774a96cd10b02aa1d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoriesToCreateTilemapFor:
+  - {fileID: 11400000, guid: e8d8494195d6d06408c840e38a17ab0b, type: 2}
+  - {fileID: 11400000, guid: 52106b0e9f9b9ae4d8fed551beacde7a, type: 2}
+  - {fileID: 11400000, guid: 64368a7216f954f4096f49d6ac7f6a3d, type: 2}
+  - {fileID: 11400000, guid: 83de8f777e1a05446b91c920c733e36e, type: 2}
+  grid: {fileID: 1762168146}
 --- !u!1 &2078099506
 GameObject:
   m_ObjectHideFlags: 0

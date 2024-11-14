@@ -35,11 +35,12 @@ public class BuildingCreator : Singleton<BuildingCreator> {
 
         playerInput.Gameplay.MousePosition.performed += OnMouseMove;
 
-        playerInput.Gameplay.MouseLeftClick.performed += OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.started += OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.canceled += OnLeftClick;
+        playerInput.Gameplay.MouseClick.started += OnLeftClick;
+        playerInput.Gameplay.MouseClick.performed += OnLeftClick;
+        playerInput.Gameplay.MouseClick.canceled += OnLeftClick;
 
         playerInput.Gameplay.MouseRightClick.performed += OnRightClick;
+
     }
 
     private void OnDisable() {
@@ -47,9 +48,9 @@ public class BuildingCreator : Singleton<BuildingCreator> {
 
         playerInput.Gameplay.MousePosition.performed -= OnMouseMove;
 
-        playerInput.Gameplay.MouseLeftClick.performed -= OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.started -= OnLeftClick;
-        playerInput.Gameplay.MouseLeftClick.canceled -= OnLeftClick;
+        playerInput.Gameplay.MouseClick.started -= OnLeftClick;
+        playerInput.Gameplay.MouseClick.performed -= OnLeftClick;
+        playerInput.Gameplay.MouseClick.canceled -= OnLeftClick;
 
         playerInput.Gameplay.MouseRightClick.performed -= OnRightClick;
     }
@@ -133,10 +134,6 @@ public class BuildingCreator : Singleton<BuildingCreator> {
     private void HandleDrawing() {
         if (selectedObj != null) {
             switch (selectedObj.PlaceType) {
-                case PlaceType.Single:
-                default:
-                    DrawItem();
-                    break;
                 case PlaceType.Line:
                     LineRenderer();
                     break;
@@ -155,6 +152,10 @@ public class BuildingCreator : Singleton<BuildingCreator> {
                 case PlaceType.Rectangle:
                     DrawBounds(tilemap);
                     previewMap.ClearAllTiles();
+                    break;
+                case PlaceType.Single:
+                default:
+                    DrawItem(tilemap, currentGridPosition, tileBase);
                     break;
             }
         }
@@ -202,13 +203,24 @@ public class BuildingCreator : Singleton<BuildingCreator> {
         // Draws bounds on given map
         for (int x = bounds.xMin; x <= bounds.xMax; x++) {
             for (int y = bounds.yMin; y <= bounds.yMax; y++) {
-                map.SetTile(new Vector3Int(x, y, 0), tileBase);
+                DrawItem(map, new Vector3Int(x, y, 0), tileBase);
             }
         }
     }
 
-    private void DrawItem() {
-        tilemap.SetTile(currentGridPosition, tileBase);
+    private void DrawItem(Tilemap map, Vector3Int position, TileBase tileBase) {
+
+        if (map != previewMap && selectedObj.GetType() == typeof(BuildingTool)) {
+            // it is a tool
+            BuildingTool tool = (BuildingTool)selectedObj;
+
+            tool.Use(position);
+
+        } else {
+            map.SetTile(position, tileBase);
+        }
+
     }
 
 }
+

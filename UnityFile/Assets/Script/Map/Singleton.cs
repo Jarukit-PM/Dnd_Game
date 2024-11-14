@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 //  Code from:
-// https://www.youtube.com/watch?v=ErJgQY5smnw
+// https://www.youtube.com/watch?v=ErJgQY5smnw&t=3s
 
 public abstract class Singleton<T> : MonoBehaviour where T : Component {
     private static T instance;

@@ -45,6 +45,15 @@ MonoBehaviour:
   - SyncHP
   - UpdateAbilityScores
   - UpdateSkills
+  - GetMessage
+  - RPC_DestroyCharacter
+  - RPC_EndCombat
+  - RPC_LetPlayerEndTurn
+  - RPC_NotifyNextTurn
+  - RPC_RequestInitiativeRoll
+  - RPC_SendInitiativeResult
+  - RPC_SetTurnOrder
+  - SetFaction
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

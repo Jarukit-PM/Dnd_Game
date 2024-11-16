@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
+using System.Runtime.CompilerServices;
 
 public class SaveHandler : Singleton<SaveHandler> {
     Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
@@ -11,6 +14,9 @@ public class SaveHandler : Singleton<SaveHandler> {
     [SerializeField] BoundsInt bounds;
     [SerializeField] string filename = "tilemapData.json";
 
+
+    [SerializeField] TMP_InputField saveNameInput;
+    [SerializeField] TMP_Dropdown loadDropDown;
     private void Start() {
         InitTilemaps();
         InitTileReferences();
@@ -73,6 +79,7 @@ public class SaveHandler : Singleton<SaveHandler> {
 
             // Add "TilemapData" Object to List
             data.Add(mapData);
+            filename = saveNameInput.text + ".json";
         }
         FileHandler.SaveToJSON<TilemapData>(data, filename);
     }
@@ -106,7 +113,10 @@ public class SaveHandler : Singleton<SaveHandler> {
             }
         }
     }
+
+
 }
+
 
 
 [Serializable]

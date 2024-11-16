@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public enum PlaceType {
     None,
@@ -12,7 +13,15 @@ public enum PlaceType {
 public class BuildingCategory : ScriptableObject {
     [SerializeField] PlaceType placeType;
     [SerializeField] int sortingOrder = 0;
+    [SerializeField] List<BuildingCategory> placementRestrictions;
+
     Tilemap tilemap;
+
+    public List<BuildingCategory> PlacementRestrictions {
+        get {
+            return placementRestrictions;
+        }
+    }
 
     public PlaceType PlaceType {
         get {

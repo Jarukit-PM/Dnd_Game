@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f1f62b13408de4d8c99fd543543ebf, type: 3}
-  m_Name: Item
+  m_Name: Wall
   m_EditorClassIdentifier: 
-  placeType: 1
+  placeType: 2
   sortingOrder: 0
+  placementRestrictions:
+  - {fileID: 11400000, guid: 64368a7216f954f4096f49d6ac7f6a3d, type: 2}
+  - {fileID: 11400000, guid: 83de8f777e1a05446b91c920c733e36e, type: 2}

@@ -13,6 +13,7 @@ using Firebase.Database;
 using Firebase.Auth;
 using Firebase.Extensions;
 using Photon.Pun;
+using System.Drawing;
 
 
 public class CharacterCreation : MonoBehaviourPun
@@ -76,46 +77,7 @@ public class CharacterCreation : MonoBehaviourPun
 
     private void Start()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            List<Character> characters = CharacterManager.Instance.GetCharacterList();
-            defaultCharacter = characters[0];
-        }
-        else
-        {
-            List<Character> characters = CharacterManager.Instance.GetEnemyList();
-            defaultCharacter = characters[0];
-        }
-        PopulateCharacterDropdown();
-        InitializeDropdowns();
-        InitialUI(0);
-        ChangeMode(PhotonNetwork.IsMasterClient, false);
-
-        // Button
-        createCharacterButton.onClick.AddListener(CreateCharacter);
-        saveCharacterButton.onClick.AddListener(EditCharacter);
-        deleteCharacterButton.onClick.AddListener(DeleteCharacter);
-        characterDropdown.onValueChanged.AddListener(SelectCharacter);
-
-        enemyCreateButton.onClick.AddListener(CreateCharacter);
-        enemyEditButton.onClick.AddListener(EditCharacter);
-        enemyDeleteButton.onClick.AddListener(DeleteCharacter);
-        enemySelectionDropDown.onValueChanged.AddListener(SelectCharacter);
-
-        levelUpButton.onClick.AddListener(LevelUP);
-        levelDownButton.onClick.AddListener(LevelDOWN);
-        resetPointButton.onClick.AddListener(ResetAbilityPoints);
-        raceDropdown.onValueChanged.AddListener(OnRaceChange);
-
-        
-
-        // Adding listeners for ability point buttons (increase and decrease)
-        foreach (var abilityUI in abilityScores)
-        {
-            abilityUI.increaseButton.onClick.AddListener(() => AssignAbilityPoint(abilityUI, true));
-            abilityUI.decreaseButton.onClick.AddListener(() => AssignAbilityPoint(abilityUI, false));
-        }
-
+        CharacterMenuSetup();
 
         //Conect to Firebase Auth and Realtime Database
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -142,8 +104,51 @@ public class CharacterCreation : MonoBehaviourPun
             }
         });
 
+        // Button
+        createCharacterButton.onClick.AddListener(CreateCharacter);
+        saveCharacterButton.onClick.AddListener(EditCharacter);
+        deleteCharacterButton.onClick.AddListener(DeleteCharacter);
+        characterDropdown.onValueChanged.AddListener(SelectCharacter);
+
+        enemyCreateButton.onClick.AddListener(CreateCharacter);
+        enemyEditButton.onClick.AddListener(EditCharacter);
+        enemyDeleteButton.onClick.AddListener(DeleteCharacter);
+        enemySelectionDropDown.onValueChanged.AddListener(SelectCharacter);
+
+        levelUpButton.onClick.AddListener(LevelUP);
+        levelDownButton.onClick.AddListener(LevelDOWN);
+        resetPointButton.onClick.AddListener(ResetAbilityPoints);
+        raceDropdown.onValueChanged.AddListener(OnRaceChange);
+
+        // Adding listeners for ability point buttons (increase and decrease)
+        foreach (var abilityUI in abilityScores)
+        {
+            abilityUI.increaseButton.onClick.AddListener(() => AssignAbilityPoint(abilityUI, true));
+            abilityUI.decreaseButton.onClick.AddListener(() => AssignAbilityPoint(abilityUI, false));
+        }
     }
-   
+    public void CharacterMenuSetup()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            List<Character> characters = CharacterManager.Instance.GetCharacterList();
+            defaultCharacter = characters[0];
+        }
+        else
+        {
+            List<Character> characters = CharacterManager.Instance.GetEnemyList();
+            defaultCharacter = characters[0];
+        }
+        PopulateCharacterDropdown();
+        InitializeDropdowns();
+        InitialUI(0);
+        ChangeMode(PhotonNetwork.IsMasterClient, false);
+
+
+
+
+        
+    }
     public void InitializeDropdowns()
     {
         // Populate race dropdown
@@ -255,7 +260,7 @@ public class CharacterCreation : MonoBehaviourPun
 
     private int CalculateModifier(int score)
     {
-        return (score - 10) / 2;
+        return (int)Math.Floor((score - 10) / 2.0);
     }
 
     private void ApplyRaceBonuses()
@@ -1114,7 +1119,9 @@ public class CharacterCreation : MonoBehaviourPun
                 characterSelect.SetActive(true);
 
             }
-            
+            enemyEdit.SetActive(false);
+            enemyCreate.SetActive(false);
+            enemyDelete.SetActive(false);
         }
         else
         {
@@ -1135,6 +1142,10 @@ public class CharacterCreation : MonoBehaviourPun
                 enemyDelete.SetActive(true);
 
             }
+            characterSave.SetActive(false);
+            characterCreate.SetActive(false);
+            characterDelete.SetActive(false);
+            characterSelect.SetActive(false);
         }
         
     }

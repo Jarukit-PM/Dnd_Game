@@ -16,3 +16,5 @@ MonoBehaviour:
   uiCategory: {fileID: 11400000, guid: b8e9a112dc713124a9656d1513644d8f, type: 2}
   tileBase: {fileID: 11400000, guid: 397f57e1fe389de43abcea53c2f7bd24, type: 2}
   placeType: 0
+  usePlacementRestrictions: 0
+  placementRestrictions: []

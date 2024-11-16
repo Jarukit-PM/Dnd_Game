@@ -72,7 +72,7 @@ public class BuildingHUD : Singleton<BuildingHUD> {
     }
 
     private BuildingObjectBase[] GetAllBuildables() {
-        return Resources.LoadAll<BuildingObjectBase>("Scriptables/Buildables");
+        return Resources.LoadAll<BuildingObjectBase>("Map/Scriptables/Buildables");
     }
 
 }

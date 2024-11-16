@@ -15,7 +15,7 @@ public class SkillListItem : MonoBehaviour
         skillDetailText.text = skillDetail;
 
         // Force TMPro to calculate the preferred sizes
-        skillNameText.ForceMeshUpdate();
+        /*skillNameText.ForceMeshUpdate();
         skillDetailText.ForceMeshUpdate();
 
         // Get the preferred heights of the text
@@ -34,6 +34,6 @@ public class SkillListItem : MonoBehaviour
         {
             Vector2 newSize = rectTransform.sizeDelta;
             rectTransform.sizeDelta = new Vector2(newSize.x, skillNameHeight + skillDetailHeight + 20); // Add padding
-        }
+        }*/
     }
 }

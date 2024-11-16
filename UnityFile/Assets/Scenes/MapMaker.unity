@@ -628,7 +628,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2062686872}
+      - m_Target: {fileID: 1900744054}
         m_TargetAssemblyTypeName: SceneOpener, Assembly-CSharp
         m_MethodName: OpenScene
         m_Mode: 5
@@ -2303,6 +2303,7 @@ GameObject:
   - component: {fileID: 1900744051}
   - component: {fileID: 1900744053}
   - component: {fileID: 1900744052}
+  - component: {fileID: 1900744054}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2379,6 +2380,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83de8f777e1a05446b91c920c733e36e, type: 2}
   - {fileID: 11400000, guid: e8d8494195d6d06408c840e38a17ab0b, type: 2}
   grid: {fileID: 1762168146}
+--- !u!114 &1900744054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900744049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f96691687446cb48a2221d2ce816298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922657708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2772,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2062686867}
   - component: {fileID: 2062686868}
-  - component: {fileID: 2062686872}
   - component: {fileID: 2062686873}
   m_Layer: 0
   m_Name: EventManager
@@ -2793,18 +2805,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29a167a17cc155943a5e4b00614aa9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2062686872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062686865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f96691687446cb48a2221d2ce816298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2062686873
